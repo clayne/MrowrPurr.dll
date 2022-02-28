@@ -1,2 +1,2 @@
 find_package(GTest CONFIG REQUIRED)
-add_subdirectory(SkyScriptTests)
+add_subdirectory(FileSystemTests)

@@ -15,7 +15,7 @@ set(SOURCE_DIR "${ROOT_DIR}/src")
 set(SOURCE_FILES
 	"${SOURCE_DIR}/main.cpp"
 	"${SOURCE_DIR}/PCH.h"
-	"${SOURCE_DIR}/FileSystem.h"
+	"${SOURCE_DIR}/PapyrusFileSystem.h"
 
 	# TODO: remove these
 	"${SOURCE_DIR}/Web.h"

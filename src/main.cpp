@@ -1,7 +1,11 @@
+#include "PapyrusFileSystem.h"
+
 namespace
 {
 	void InitializeLog()
 	{
+		
+
 		auto path = logger::log_directory();
 		if (!path) {
 			util::report_and_fail("Failed to find standard logging directory"sv);
@@ -38,6 +42,9 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 	logger::info("{} v{}"sv, Plugin::NAME, Plugin::VERSION.string());
 
 	SKSE::Init(a_skse);
+
+	const auto papyrus = SKSE::GetPapyrusInterface();
+	papyrus->Register(PapyrusFileSystem::BIND);
 
 	return true;
 }

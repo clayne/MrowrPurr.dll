@@ -1,12 +1,12 @@
 #include <format>
 #include <gtest/gtest.h>
-#include <SkyScript.h>
+// #include <FileSystem.h>
 
 TEST(HelloTest, BasicAssertions) {
-  auto something = new SkyScript::Whatever();
-  auto text = something->ReturnSomethingFromSomewhere();
-  std::cout << std::format("The file text: {}", text);
-  EXPECT_NE(text.find("Hello"), std::string::npos);
+  // auto something = new FileSystem::Whatever();
+  // auto text = something->ReturnSomethingFromSomewhere();
+  // std::cout << std::format("The file text: {}", text);
+  // EXPECT_NE(text.find("Hello"), std::string::npos);
   // EXPECT_NE(text.find("From"), std::string::npos);
   // EXPECT_NE(text.find("Array"), std::string::npos);
 }

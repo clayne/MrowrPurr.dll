@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<PapyrusProject xmlns="PapyrusProject.xsd" 
+    Flags="TESV_Papyrus_Flags.flg" 
+    Game="sse"
+    Output="Scripts" 
+    Anonymize="false" 
+    Optimize="false" 
+    Release="false" 
+    Zip="false"
+    Package="false"
+    Final="false">
+    <Imports>
+        <Import>C:\Program Files (x86)\Steam\steamapps\common\Skyrim SE with Creation Kit\Data\Scripts\Source</Import>
+    </Imports>
+    <Folders>
+        <Folder>./Scripts/Source</Folder>
+    </Folders>
+</PapyrusProject>

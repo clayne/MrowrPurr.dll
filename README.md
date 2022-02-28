@@ -6,10 +6,10 @@
 ### Functions
 
 ```psc
-// string Skyrim()
-// string Data()
-// string MyDocuments()
-// string DocumentsGameDirectory()
+; string Skyrim()
+; string Data()
+; string MyDocuments()
+; string DocumentsGameDirectory()
 
 bool Exists(string path)
 
