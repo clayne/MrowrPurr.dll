@@ -5,7 +5,7 @@
 
 ### Functions
 
-```cs
+```psc
 // string Skyrim()
 // string Data()
 // string MyDocuments()
