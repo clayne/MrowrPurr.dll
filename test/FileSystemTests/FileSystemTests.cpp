@@ -1,8 +1,25 @@
+// #include <PapyrusFileSystem.h>
+// #include <RE/Skyrim.h>
+
+#define _INC_WINDOWS
+#include <SKSE/Impl/PCH.h>
+#include <RE/Skyrim.h>
+#include <SKSE/SKSE.h>
+#include <REL/Relocation.h>
+#undef _INC_WINDOWS
+
+#include <ShlObj_core.h>
+#include <Windows.h>
+#include <Psapi.h>
+
 #include <format>
 #include <gtest/gtest.h>
-// #include <FileSystem.h>
+#include "PapyrusFileSystem.h"
 
 TEST(HelloTest, BasicAssertions) {
+  auto results = PapyrusFileSystem::List(nullptr, "foo");
+  std::cout << std::format("RESULTS length {} and first: {}", results.size(), results[0]);
+  
   // auto something = new FileSystem::Whatever();
   // auto text = something->ReturnSomethingFromSomewhere();
   // std::cout << std::format("The file text: {}", text);

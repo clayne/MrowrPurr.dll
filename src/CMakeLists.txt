@@ -14,7 +14,6 @@ set(SOURCE_DIR "${ROOT_DIR}/src")
 # Set Project Source Files
 set(SOURCE_FILES
 	"${SOURCE_DIR}/main.cpp"
-	"${SOURCE_DIR}/PCH.h"
 	"${SOURCE_DIR}/PapyrusFileSystem.h"
 
 	# TODO: remove these
@@ -95,14 +94,13 @@ target_include_directories(
 
 # Web framework: Oatpp
 find_package(oatpp 1.3.0 REQUIRED)
+find_package(CommonLibSSE CONFIG REQUIRED)
+
 target_link_libraries("${PROJECT_NAME}" PRIVATE PUBLIC oatpp::oatpp)
 
-###################################################
-# TODO Set this up for AE, SE, and VR
-###################################################
-# Load CommonLibSSE from vcpkg
-find_package(CommonLibSSE CONFIG REQUIRED)
-target_link_libraries("${PROJECT_NAME}" PRIVATE CommonLibSSE::CommonLibSSE)
+target_link_libraries("${PROJECT_NAME}" PUBLIC CommonLibSSE::CommonLibSSE)
+
+target_link_libraries("${PROJECT_NAME}" PUBLIC spdlog::spdlog)
 
 target_precompile_headers(
 	"${PROJECT_NAME}"

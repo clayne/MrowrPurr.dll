@@ -13,7 +13,7 @@ namespace PapyrusFileSystem {
     };
 
     bool BIND(RE::BSScript::IVirtualMachine* vm) {
-        static constexpr auto className = "FileSystem"sv;
+        static constexpr auto className = "FileSystem";
         vm->RegisterFunction("List", className, List);
         return true;
     };
