@@ -21,3 +21,9 @@ TEST_F(ListingFilesTest, OneFile) {
     EXPECT_EQ(results.size(), 1);
     EXPECT_EQ(results[0], filePath.string());
 }
+
+TEST_F(ListingFilesTest, DoesNotExist) {
+    auto results = PapyrusFileSystem::List(nullptr, "C:\\This\\Does\\Not\\Exist");
+
+    EXPECT_EQ(results.size(), 0);
+}
