@@ -27,3 +27,17 @@ TEST_F(ListingFilesTest, DoesNotExist) {
 
     EXPECT_EQ(results.size(), 0);
 }
+
+///////////////////////////////////////////////////////
+
+class PredicatesTest : public PapyrusFileSystemTest {};
+
+TEST_F(PredicatesTest, Exists) {
+    auto dir = CreateTempFolder();
+    const auto filePath = Path(dir).append("Test.txt");
+    Touch(filePath);
+    
+    EXPECT_TRUE(PapyrusFileSystem::Exists(nullptr, dir.string()));
+    EXPECT_TRUE(PapyrusFileSystem::Exists(nullptr, filePath.string()));
+    EXPECT_FALSE(PapyrusFileSystem::Exists(nullptr, "C:\\This\\Totally\\Does\\Not\\Exist"));
+}

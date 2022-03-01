@@ -1,3 +1,5 @@
+#pragma once
+
 #define _INC_WINDOWS
 #include <SKSE/Impl/PCH.h>
 #include <RE/Skyrim.h>
