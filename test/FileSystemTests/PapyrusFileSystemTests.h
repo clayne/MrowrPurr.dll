@@ -27,21 +27,29 @@ class PapyrusFileSystemTest : public ::testing::Test {
    void TearDown() override {
       for (auto directory : tempDirectories) {
          if (fs::exists(directory)) {
-            if (! fs::remove(directory)) {
+            if (! fs::remove_all(directory)) {
                std::cout << std::format("Failed to remove {}", directory);
             }
          }
       }
    }
 
-   std::string_view CreateTempFolder() {
+   std::filesystem::path Path(std::filesystem::path path) {
+      return std::filesystem::path(path.string());
+   }
+
+   std::filesystem::path CreateTempFolder() {
       auto path = std::tmpnam(nullptr);
       if (fs::create_directory(path)) {
          tempDirectories.push_back(path);
-         return path;
+         return std::filesystem::path(path);
       } else {
          std::cout << std::format("Failed to create temp directory {}", path);
          return "";
       }
+   }
+
+   void Touch(std::filesystem::path path) {
+      std::ofstream output(path.string());
    }
 };
