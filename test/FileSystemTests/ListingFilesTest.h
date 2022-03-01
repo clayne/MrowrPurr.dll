@@ -12,7 +12,7 @@ TEST_F(ListingFilesTest, EmptyFolder) {
 
 TEST_F(ListingFilesTest, OneFile) {
     const auto dir = CreateTempFolder();
-    const auto filePath = Path(dir).append("Test.txt");
+    const auto filePath = fs::path(dir).append("Test.txt");
     
     Touch(filePath);
 
@@ -27,3 +27,31 @@ TEST_F(ListingFilesTest, DoesNotExist) {
 
     EXPECT_EQ(results.size(), 0);
 }
+
+// TEST_F(ListingFilesTest, OnlyListFolders) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, OnlyListFiles) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, OnlyListFilesWithExtension) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, OnlyListEntriesContainingText) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, OnlyListEntriesMatchingRegexString) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, ListRecursiveEntries) {
+//     EXPECT_TRUE(false);
+// }
+
+// TEST_F(ListingFilesTest, ListRecursiveEntriesToProvidedDepth) {
+//     EXPECT_TRUE(false);
+// }

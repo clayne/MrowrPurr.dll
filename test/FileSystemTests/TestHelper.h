@@ -36,10 +36,6 @@ class PapyrusFileSystemTest : public ::testing::Test {
       }
    }
 
-   std::filesystem::path Path(std::filesystem::path path) {
-      return std::filesystem::path(path.string());
-   }
-
    std::filesystem::path CreateTempFolder() {
       auto path = std::tmpnam(nullptr);
       if (fs::create_directory(path)) {
