@@ -5,13 +5,19 @@
 
 namespace fs = std::filesystem;
 
-// TODO make sure it doesn't explode when it's not a directory (not exist OR is file)
-
 namespace PapyrusFileSystem {
         
     bool Exists(RE::StaticFunctionTag*, std::string_view path) {
         return fs::exists(path);
     };
+
+    bool IsFile(RE::StaticFunctionTag*, std::string_view path) {
+        return fs::exists(path) && ! fs::is_directory(path);
+    }
+
+    bool IsDirectory(RE::StaticFunctionTag*, std::string_view path) {
+        return fs::is_directory(path);
+    }
 
     std::vector<std::string> List(RE::StaticFunctionTag*, std::string_view directory) {
         auto paths = std::vector<std::string>();
@@ -27,6 +33,8 @@ namespace PapyrusFileSystem {
     bool BIND(RE::BSScript::IVirtualMachine* vm) {
         static constexpr auto className = "FileSystem";
         vm->RegisterFunction("Exists", className, Exists);
+        vm->RegisterFunction("IsFile", className, IsFile);
+        vm->RegisterFunction("IsDirectory", className, IsDirectory);
         vm->RegisterFunction("List", className, List);
         return true;
     };
