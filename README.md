@@ -26,4 +26,7 @@ bool WriteToFile(string path, string text, append = false)
 string ReadFromFile(string path)
 bool CopyFile(string fromPath, string toPath)
 bool MoveFile(string fromPath, string toPath)
+
+Modified time
+Size
 ```
