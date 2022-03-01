@@ -8,8 +8,12 @@ namespace fs = std::filesystem;
 namespace PapyrusFileSystem {
         
     std::vector<std::string_view> List(RE::StaticFunctionTag*, std::string_view path) {
-        std::vector<std::string_view> response = { "Hello", "World" };
-        return response;
+        auto paths = std::vector<std::string_view>();
+        return paths;
+        // for (const auto & path : fs::directory_iterator(path)) {
+
+        // }
+        // return paths;
     };
 
     bool BIND(RE::BSScript::IVirtualMachine* vm) {

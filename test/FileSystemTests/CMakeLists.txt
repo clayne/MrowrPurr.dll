@@ -1,4 +1,4 @@
-file(GLOB SRCS *.cpp)
+file(GLOB SRCS *.h *.cpp)
 
 ADD_EXECUTABLE(FileSystemTests ${SRCS})
 
