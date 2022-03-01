@@ -29,4 +29,6 @@ bool MoveFile(string fromPath, string toPath)
 
 Modified time
 Size
+
+Watch
 ```
