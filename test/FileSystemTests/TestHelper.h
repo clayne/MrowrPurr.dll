@@ -18,36 +18,51 @@
 #include "PapyrusFileSystem.h"
 
 class PapyrusFileSystemTest : public ::testing::Test {
- protected:
+protected:
 
-   std::vector<std::string_view> tempDirectories;
-
-   void SetUp() override {
-      tempDirectories = std::vector<std::string_view> {};
-   }
+   std::string _testTempFolder;
 
    void TearDown() override {
-      for (auto directory : tempDirectories) {
-         if (fs::exists(directory)) {
-            if (! fs::remove_all(directory)) {
-               std::cout << std::format("Failed to remove {}", directory);
-            }
-         }
+      if (fs::is_directory(_testTempFolder)) {
+         fs::remove_all(_testTempFolder);
       }
    }
 
-   std::filesystem::path CreateTempFolder() {
-      auto path = std::tmpnam(nullptr);
-      if (fs::create_directory(path)) {
-         tempDirectories.push_back(path);
-         return std::filesystem::path(path);
-      } else {
-         std::cout << std::format("Failed to create temp directory {}", path);
-         return "";
-      }
+   std::string CurrentFolder() {
+      return GetTestTempFolderPath().string();
    }
 
-   void Touch(std::filesystem::path path) {
-      std::ofstream output(path.string());
+   std::string MkDir(std::string relativePath) {
+      auto folderPath = GetTestTempFolderPath().append(relativePath);
+      if (! fs::is_directory(folderPath))
+         fs::create_directories(folderPath);
+      return folderPath.string();
+   }
+
+   std::string Touch(std::string relativePath) {
+      auto filePath = GetTestTempFolderPath().append(relativePath);
+      if (! fs::is_directory(filePath.parent_path()))
+         fs::create_directories(filePath.parent_path());
+      std::ofstream(filePath.string());
+      return filePath.string();
+   }
+
+   std::string WriteToFile(std::string relativePath, std::string textContent) {
+      auto filePath = GetTestTempFolderPath().append(relativePath);
+      if (! fs::is_directory(filePath.parent_path()))
+         fs::create_directories(filePath.parent_path());
+      std::ofstream output(filePath.string());
+      output << textContent;
+      return filePath.string();
+   }
+
+private:
+
+   fs::path GetTestTempFolderPath() {
+      if (! fs::is_directory(_testTempFolder)) {
+         _testTempFolder = std::tmpnam(nullptr);
+         fs::create_directory(_testTempFolder);
+      }
+      return fs::path(_testTempFolder);
    }
 };
