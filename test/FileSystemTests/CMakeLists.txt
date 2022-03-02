@@ -8,6 +8,6 @@ target_compile_features(
 		cxx_std_23
 )
 
-target_link_libraries(FileSystemTests FileSystem GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
+target_link_libraries(FileSystemTests MrowrPurr GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
 
 add_test(NAME FileSystemTests COMMAND FileSystemTests)

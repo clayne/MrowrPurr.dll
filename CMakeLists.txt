@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Your SKSE plugin name and version
 # These become available via Plugin.h
 project(
-	FileSystem
+	MrowrPurr
 	VERSION 1.0.0
 	LANGUAGES CXX
 )
