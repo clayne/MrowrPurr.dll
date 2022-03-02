@@ -6,6 +6,12 @@
 namespace fs = std::filesystem;
 
 namespace PapyrusFileSystem {
+
+    std::vector<std::string_view> allowedPaths;
+
+    void Setup() {
+
+    }
         
     bool Exists(RE::StaticFunctionTag*, std::string_view path) {
         return fs::exists(path);

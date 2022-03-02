@@ -12,17 +12,18 @@ set(ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(SOURCE_DIR "${ROOT_DIR}/src")
 
 # Set Project Source Files
-set(SOURCE_FILES
-	"${SOURCE_DIR}/main.cpp"
-	"${SOURCE_DIR}/PapyrusFileSystem.h"
+file(GLOB SOURCE_FILES "${SOURCE_DIR}/*.h" "${SOURCE_DIR}/*.cpp")
+# set(SOURCE_FILES
+# 	"${SOURCE_DIR}/main.cpp"
+# 	"${SOURCE_DIR}/PapyrusFileSystem.h"
 
-	# TODO: remove these
-	"${SOURCE_DIR}/Web.h"
-	"${SOURCE_DIR}/Web/AppComponent.hpp"
-	"${SOURCE_DIR}/Web/controllers/HelloController.cpp"
-	"${SOURCE_DIR}/Web/controllers/HelloController.hpp"
-	"${SOURCE_DIR}/Web/dtos/TestDto.hpp"
-)
+# 	# TODO: remove these
+# 	"${SOURCE_DIR}/Web.h"
+# 	"${SOURCE_DIR}/Web/AppComponent.hpp"
+# 	"${SOURCE_DIR}/Web/controllers/HelloController.cpp"
+# 	"${SOURCE_DIR}/Web/controllers/HelloController.hpp"
+# 	"${SOURCE_DIR}/Web/dtos/TestDto.hpp"
+# )
 
 source_group(TREE "${ROOT_DIR}" FILES ${SOURCE_FILES})
 
@@ -101,6 +102,9 @@ target_link_libraries("${PROJECT_NAME}" PRIVATE PUBLIC oatpp::oatpp)
 target_link_libraries("${PROJECT_NAME}" PUBLIC CommonLibSSE::CommonLibSSE)
 
 target_link_libraries("${PROJECT_NAME}" PUBLIC spdlog::spdlog)
+
+find_path(SIMPLEINI_INCLUDE_DIRS "ConvertUTF.c")
+target_include_directories("${PROJECT_NAME}" PRIVATE ${SIMPLEINI_INCLUDE_DIRS})
 
 target_precompile_headers(
 	"${PROJECT_NAME}"
